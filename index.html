@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #262525;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        .color-options {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .color-option {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .color-option:hover {
+            border-color: #333;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .buy-button:hover {
+            background-color: #45a049;
+        }
+        .size-quantity {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .size-quantity select, .size-quantity input {
+            width: 48%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .size-quantity label {
+            width: 48%;
+            text-align: right;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NIKE SHOES</h1>
+        <div class="color-options">
+            <h2>Choose Color:</h2>
+            <div class="color-option" style="background-color: red" onclick="changeColor('red')"></div>
+            <div class="color-option" style="background-color: blue" onclick="changeColor('blue')"></div>
+            <div class="color-option" style="background-color: green" onclick="changeColor('green')"></div>
+        </div>
+        <div>
+            <img id="shoe-image" src="shoe.jpeg" alt="Shoe">
+        </div>
+        <div class="size-quantity">
+            <label for="size">Size:</label>
+            <select id="size">
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" placeholder="Quantity" min="1" value="1">
+        </div>
+        <button class="buy-button" onclick="buyNow()">Buy Now</button>
+    </div>
+
+    <script>
+        // MRP (Flat discount in rupees)
+        var mrp = 500;
+
+        function changeColor(color) {
+            if(color == 'red') {
+            document.getElementById('shoe-image').src = 'shoe.jpeg';
+        }
+        if(color == 'blue') {
+            document.getElementById('shoe-image').src = 'buleshoe.jpeg';
+        }
+        if(color == 'green') {
+            document.getElementById('shoe-image').src = 'greenshoe.jpeg';
+        }
+    }
+        
+        function buyNow() {
+            var size = document.getElementById('size').value;
+            var quantity = document.getElementById('quantity').value;
+            var totalPrice = (size * quantity) - mrp; // Subtracting the flat discount
+            alert('Thank you for your purchase! Size: ' + size + ', Quantity: ' + quantity + ', Total Price: ' + totalPrice);
+        }
+    </script>
+</body>
+</html>
